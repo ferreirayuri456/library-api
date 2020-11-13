@@ -1,0 +1,47 @@
+server:
+  port: 8087
+  
+  
+# Datasource
+spring:  datasource:    url: jdbc:h2:mem:books;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: 
+    driver-class-name: org.h2.Driver
+  jpa:    hibernate:      ddl-auto: update
+  mail:
+    protocol: smtp
+    host: smtp.mailtrap.io
+    port: 2525
+    username: 549878b7a48618
+    password: f161e80cd994ad
+    properties:      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true  boot:    admin:      client:        url: http://localhost:8081
+        enabled: true
+        username: admin
+        password: admin      application:
+  mail:
+    lateLoans:
+      message: Atenção! Você tem um empréstimo atrasado. Favor devolver o livro mais rápido possível.
+    default:
+      shipper: mail@library.api.com
+      
+      
+springfox:
+  documentation:
+    swagger:
+      v2:
+        home: /docs
+        contactEmail: ferreirayuri456@gmail.com
+        
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
